@@ -1,0 +1,351 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+:root {
+    --bg: #0f0f1e;
+    --bg-card: #1a1a2e;
+    --bg-hover: #252542;
+    --primary: #e50914;
+    --primary-hover: #ff1c27;
+    --text: #ffffff;
+    --text-muted: #8899a6;
+    --border: #2d2d44;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+}
+
+.hidden { display: none !important; }
+
+/* ===== شاشة الدخول ===== */
+.login-screen {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #0f0f1e, #1a1a2e);
+    padding: 20px;
+}
+
+.login-box {
+    background: var(--bg-card);
+    padding: 40px 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    border: 1px solid var(--border);
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo i {
+    font-size: 50px;
+    color: var(--primary);
+}
+
+.logo h1 {
+    font-size: 28px;
+    margin-top: 10px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.input-group input {
+    width: 100%;
+    padding: 15px 45px 15px 15px;
+    background: var(--bg);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 16px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 15px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-login:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.error-msg {
+    color: #ff4444;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.hint {
+    margin-top: 20px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+.hint span {
+    color: var(--primary);
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* ===== التطبيق الرئيسي ===== */
+.main-app {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* القائمة الجانبية */
+.sidebar {
+    width: 240px;
+    background: var(--bg-card);
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid var(--border);
+    z-index: 100;
+    transition: 0.3s;
+}
+
+.sidebar-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-header i {
+    font-size: 28px;
+    color: var(--primary);
+}
+
+.sidebar-header span {
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.sidebar-close {
+    margin-right: auto;
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+}
+
+.sidebar-nav {
+    flex: 1;
+    padding: 20px 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 25px;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: 0.3s;
+    border-right: 3px solid transparent;
+}
+
+.nav-item:hover {
+    background: var(--bg-hover);
+    color: var(--text);
+}
+
+.nav-item.active {
+    color: var(--primary);
+    border-right-color: var(--primary);
+    background: rgba(229, 9, 20, 0.1);
+}
+
+.nav-item i {
+    font-size: 18px;
+    width: 20px;
+}
+
+.logout-btn {
+    margin: 20px;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+}
+
+/* المحتوى */
+.content {
+    flex: 1;
+    margin-right: 240px;
+    min-height: 100vh;
+}
+
+.top-bar {
+    background: var(--bg-card);
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    border-bottom: 1px solid var(--border);
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 22px;
+    cursor: pointer;
+    display: none;
+}
+
+.top-title {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.top-actions {
+    margin-right: auto;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: var(--text);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.icon-btn:hover {
+    background: var(--bg-hover);
+}
+
+/* الأقسام */
+.section {
+    display: none;
+    padding: 25px;
+    animation: fadeIn 0.5s;
+}
+
+.section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero Banner */
+.hero-banner {
+    height: 350px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(15,15,30,0.8));
+}
+
+.hero-content {
+    position: relative;
+    padding: 40px;
+    z-index: 2;
+}
+
+.badge {
+    background: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.hero-content h2 {
+    font-size: 32px;
+    margin: 15px 0 10px;
+}
+
+.hero-content p {
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.btn-play {
+    background: var(--primary);
